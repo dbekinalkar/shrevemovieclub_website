@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:shrevemovieclub_website/src/pages/about.dart';
+import 'package:shrevemovieclub_website/src/pages/contact.dart';
+import 'package:shrevemovieclub_website/src/pages/events.dart';
+import 'package:shrevemovieclub_website/src/pages/ratings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +29,33 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const AboutPage(),
+      initialRoute: '/',
+      onGenerateRoute: _onGenerateRoute,
+    );
+  }
+
+  Route<dynamic>? _onGenerateRoute(settings) {
+    switch (settings.name) {
+      case '/ratings':
+        return buildRoute(settings, const RatingPage());
+      case '/events':
+        return buildRoute(settings, const EventPage());
+      case '/contact':
+        return buildRoute(settings, const ContactPage());
+      default:
+        return buildRoute(settings, const AboutPage());
+    }
+
+    // Unknown route
+    return MaterialPageRoute(builder: (_) => const AboutPage());
+  }
+
+  PageRouteBuilder<dynamic> buildRoute(RouteSettings settings, var page) {
+    return PageRouteBuilder(
+      settings:
+          settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
+      pageBuilder: (_, __, ___) => page as StatelessWidget,
+      transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c),
     );
   }
 }

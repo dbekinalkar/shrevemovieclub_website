@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shrevemovieclub_website/src/pages/events.dart';
 
 class CustomTopbar extends StatelessWidget {
   const CustomTopbar({super.key});
@@ -41,19 +42,19 @@ class CustomTopbar extends StatelessWidget {
           Expanded(child: SizedBox(width: size.width / 10)),
           TopbarButton(
             title: "About",
-            onTap: () {},
+            onTap: () => Navigator.pushReplacementNamed(context, '/'),
           ),
           TopbarButton(
             title: "Ratings",
-            onTap: () {},
+            onTap: () => Navigator.pushReplacementNamed(context, '/ratings'),
           ),
           TopbarButton(
             title: "Events",
-            onTap: () {},
+            onTap: () => Navigator.pushReplacementNamed(context, '/events'),
           ),
           TopbarButton(
             title: "Contact Us",
-            onTap: () {},
+            onTap: () => Navigator.pushReplacementNamed(context, '/contact'),
           ),
           Expanded(child: SizedBox(width: size.width / 8)),
         ],
@@ -92,10 +93,10 @@ class _TopbarButtonState extends State<TopbarButton> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Center(
-                child: Text(widget.title,
-                    style: const TextStyle(
-                      color: Colors.yellow,
-                    )),
+                child: Text(
+                  widget.title,
+                  style: const TextStyle(color: Colors.yellow),
+                ),
               ),
               const SizedBox(height: 5),
               Align(
