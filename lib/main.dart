@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 import 'package:shrevemovieclub_website/src/pages/about.dart';
 import 'package:shrevemovieclub_website/src/pages/contact.dart';
 import 'package:shrevemovieclub_website/src/pages/events.dart';
 import 'package:shrevemovieclub_website/src/pages/ratings.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -55,7 +62,6 @@ class MyApp extends StatelessWidget {
       settings:
           settings, // Pass this to make popUntil(), pushNamedAndRemoveUntil(), works
       pageBuilder: (_, __, ___) => page as StatelessWidget,
-      transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c),
     );
   }
 }

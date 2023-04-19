@@ -42,19 +42,19 @@ class CustomTopbar extends StatelessWidget {
           Expanded(child: SizedBox(width: size.width / 10)),
           TopbarButton(
             title: "About",
-            onTap: () => Navigator.pushReplacementNamed(context, '/'),
+            onTap: () => Navigator.pushNamed(context, '/'),
           ),
           TopbarButton(
             title: "Ratings",
-            onTap: () => Navigator.pushReplacementNamed(context, '/ratings'),
+            onTap: () => Navigator.pushNamed(context, '/ratings'),
           ),
           TopbarButton(
             title: "Events",
-            onTap: () => Navigator.pushReplacementNamed(context, '/events'),
+            onTap: () => Navigator.pushNamed(context, '/events'),
           ),
           TopbarButton(
             title: "Contact Us",
-            onTap: () => Navigator.pushReplacementNamed(context, '/contact'),
+            onTap: () => Navigator.pushNamed(context, '/contact'),
           ),
           Expanded(child: SizedBox(width: size.width / 8)),
         ],
@@ -79,39 +79,37 @@ class _TopbarButtonState extends State<TopbarButton> {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.black,
-      child: InkWell(
-        hoverColor: Colors.black,
-        onHover: (value) {
-          setState(() {
-            _isHovering = value;
-          });
-        },
-        onTap: widget.onTap,
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Center(
-                child: Text(
-                  widget.title,
-                  style: const TextStyle(color: Colors.yellow),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Expanded(
+            child: InkWell(
+              hoverColor: Colors.black,
+              onHover: (value) {
+                setState(() {
+                  _isHovering = value;
+                });
+              },
+              onTap: widget.onTap,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: Text(
+                    widget.title,
+                    style: const TextStyle(color: Colors.yellow),
+                  ),
                 ),
               ),
-              const SizedBox(height: 5),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Visibility(
-                  maintainAnimation: true,
-                  maintainState: true,
-                  maintainSize: true,
-                  visible: _isHovering,
-                  child: Container(height: 2, width: 20, color: Colors.yellow),
-                ),
-              )
-            ],
+            ),
           ),
-        ),
+          Visibility(
+            maintainAnimation: true,
+            maintainState: true,
+            maintainSize: true,
+            visible: _isHovering,
+            child: Container(height: 4, width: 80, color: Colors.yellow),
+          )
+        ],
       ),
     );
   }
