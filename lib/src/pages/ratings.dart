@@ -10,7 +10,7 @@ class RatingPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(size.width, 70),
-        child: const CustomTopbar(),
+        child: const CustomTopbar(selectedPage: 2),
       ),
       body: Text('Rating'),
     );

@@ -10,7 +10,7 @@ class EventPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(size.width, 70),
-        child: const CustomTopbar(),
+        child: const CustomTopbar(selectedPage: 3),
       ),
       body: Text('Events'),
     );
