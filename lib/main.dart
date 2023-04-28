@@ -43,6 +43,8 @@ class MyApp extends StatelessWidget {
 
   Route<dynamic>? _onGenerateRoute(settings) {
     switch (settings.name) {
+      case '/about':
+        return buildRoute(settings, const AboutPage());
       case '/ratings':
         return buildRoute(settings, const RatingPage());
       case '/events':
